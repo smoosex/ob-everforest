@@ -94,17 +94,18 @@ body:is(.mod-macos, .adaptive-mode-off) {
     padding: 4px var(--side-padding);
   }
   &:not(.is-mobile) {
-    --tab-action-width: 40px;
+    --tab-action-width: 36px;
 
     .clickable-icon {
-      min-width: var(--tab-action-width);
+      transition: var(--anim-duration-superfast);
+      padding: 10px;
     }
     .clickable-icon:not([aria-disabled="true"]):hover,
     .clickable-icon.has-active-menu,
-    .modal-close-button:hover,
-    .modal-header-button:hover {
+    .modal-header-button:hover,
+    .search-input-container input {
       box-shadow: var(--shadow-xs);
-      background-color: var(--raised-background);
+      background: var(--raised-background);
     }
   }
 
@@ -214,36 +215,26 @@ body:is(.mod-macos, .adaptive-mode-off) {
 
   // Search bar
   .search-input-container {
+    --search-icon-size: var(--icon-xs);
     display: flex;
     align-items: center;
     overflow: visible;
+    min-height: 32px;
 
-    &:before {
-      top: unset !important;
-      inset-inline-start: calc((var(--input-height) - var(--icon-s)) / 2);
-      height: var(--icon-s);
-      width: var(--icon-s);
+    &::before {
+      top: unset;
+      inset-inline-start: 12px !important;
     }
 
     input {
-      padding-inline-start: var(--input-height) !important;
-    }
-  }
-  .mod-sidedock,
-  .vertical-tab-header,
-  .community-modal-controls {
-    .search-input-container,
-    input[type="search"] {
-      --input-height: 32px;
-    }
-    .search-input-container input[type="search"] {
       border: none;
+      padding-inline-start: calc(12px + var(--search-icon-size) + 8px);
+      min-height: inherit;
       border-radius: 100vh;
-      background-color: var(--background-modifier-hover);
     }
   }
-  &.is-mobile .search-input-container::before {
-    inset-inline-start: 12px;
+  &.is-mobile .search-input-container input {
+    background-color: transparent;
   }
 
   // Ribbon
@@ -261,31 +252,25 @@ body:is(.mod-macos, .adaptive-mode-off) {
       gap: 0px;
       transition: var(--anim-duration-moderate);
       border-radius: var(--clickable-icon-radius);
-      padding: 0;
-      outline: 2px solid transparent;
-      background-clip: content-box;
+      padding: 4px;
       height: auto;
-      z-index: 1;
     }
 
     .workspace-tab-header-container-inner:hover {
       background-color: var(--background-modifier-hover);
-      outline-color: var(--background-modifier-hover);
-    }
-    .workspace-tab-header-container-inner:hover .workspace-tab-header.is-active {
-      background-color: var(--background-primary);
-      box-shadow: var(--shadow-xs);
 
-      .workspace-tab-header-inner-icon {
-        color: var(--text-normal) !important;
+      .workspace-tab-header.is-active {
+        background: var(--raised-background);
+        box-shadow: var(--shadow-xs);
       }
     }
 
     .workspace-tab-header {
       border-radius: var(--clickable-icon-radius);
+      min-width: var(--tab-action-width);
     }
     .workspace-tab-header-inner {
-      padding: 8px;
+      padding: 6px;
     }
     .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
       background-color: var(--background-modifier-hover);
@@ -293,7 +278,6 @@ body:is(.mod-macos, .adaptive-mode-off) {
     .sidebar-toggle-button,
     .workspace-tab-header-inner {
       border-radius: var(--clickable-icon-radius);
-      width: var(--tab-action-width);
       height: fit-content;
       z-index: 1;
     }

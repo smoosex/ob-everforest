@@ -3,6 +3,36 @@ body.mod-macos:not(.is-mobile) .mod-settings {
   --dropdown-icon-background: transparent;
 }
 
+body:not(.is-mobile).is-popout-modal .modal {
+  animation: none !important;
+}
+body.is-frameless:not(.is-mobile).is-popout-modal {
+  --titlebar-height: 40px;
+  --traffic-lights-offset-x: 48px;
+  --traffic-lights-offset-y: 56px;
+
+  padding-top: 0px !important;
+
+  .titlebar {
+    background-color: transparent;
+    border: none;
+    z-index: 1;
+  }
+  .titlebar-text {
+    display: none;
+  }
+  .modal.mod-sidebar-layout {
+    -webkit-app-region: unset;
+  }
+  &.mod-macos .vertical-tab-header {
+    padding-top: var(--titlebar-height);
+  }
+
+  .community-modal-search {
+    margin-left: var(--frame-left-space);
+  }
+}
+
 body:not(.is-phone) {
   --setting-items-radius: var(--radius-m);
   --setting-items-padding: calc(16px * var(--density-modifier)) 16px;
@@ -98,16 +128,19 @@ body:not(.is-phone) {
   }
 
   .modal.mod-community-modal {
+    background-color: var(--settings-background, var(--modal-background));
+
     .modal-sidebar {
       padding: 0;
     }
     .community-modal-controls {
       display: flex;
-      height: auto;
-      align-items: center;
-      padding: 0 8px;
-      width: 100%;
+      row-gap: 8px;
       flex-wrap: wrap;
+      align-items: center;
+      padding: 12px;
+      width: 100%;
+      height: auto;
     }
     .modal-sidebar:not(:only-child) .community-modal-controls .setting-item {
       width: 100%;
@@ -115,7 +148,7 @@ body:not(.is-phone) {
     }
     .community-modal-controls .setting-item {
       margin: 0;
-      padding: 8px 0;
+      padding: 0;
       display: flex;
       align-items: center;
     }
@@ -131,7 +164,13 @@ body:not(.is-phone) {
     }
     .community-modal-search-results {
       gap: 8px;
-      padding: 8px;
+    }
+    .community-modal-search {
+      padding: 0;
+      margin: 0;
+    }
+    .community-item {
+      border: none;
     }
     .community-item:not(.is-selected) {
       background-color: var(--setting-items-background);
