@@ -8,7 +8,7 @@ body:not(.is-mobile) {
 body:not(.is-mobile).hover-sidedock .mod-sidedock.is-sidedock-collapsed.mod-left-split:hover + .mod-root,
 body:not(.is-mobile).hover-sidedock .mod-root:has(+ .mod-sidedock.is-sidedock-collapsed.mod-right-split:hover),
 body:not(.is-mobile).hover-sidedock .mod-sidedock.is-sidedock-collapsed,
-body:not(.is-mobile).hover-ribbon .workspace-ribbon.mod-left:hover ~ .mod-root {
+body:not(.is-mobile).hover-ribbon .workspace-ribbon:is(.mod-left, .mod-primary):hover ~ .mod-root {
   div:is(.workspace-tab-header-container, .workspace-tab-header-container-inner) {
     -webkit-app-region: no-drag;
   }
@@ -65,7 +65,7 @@ body:not(.is-mobile).hover-sidedock {
 
   // Hovered
   .mod-sidedock.is-sidedock-collapsed[style*="display"]:hover,
-  &.hover-ribbon .workspace-ribbon.mod-left.is-collapsed:hover + .mod-sidedock,
+  &.hover-ribbon .workspace-ribbon:is(.mod-left, .mod-primary).is-collapsed:hover + .mod-sidedock,
   &:not(.hover-sidedock-active-off) > .app-container > .horizontal-main-container > .workspace > .mod-sidedock:has(> .workspace-tabs.mod-active) {
     transition-delay: var(--hover-sidedock-delay);
     transform: none;
@@ -78,7 +78,7 @@ body:not(.is-mobile).hover-sidedock {
 }
 
 body:not(.is-mobile).hover-ribbon.show-ribbon {
-  .workspace-ribbon.mod-left {
+  .workspace-ribbon:is(.mod-left, .mod-primary) {
     position: absolute;
     z-index: 12;
     height: -webkit-fill-available;
@@ -86,20 +86,20 @@ body:not(.is-mobile).hover-ribbon.show-ribbon {
     transform: translateX(calc(-1 * var(--ribbon-width) + var(--hover-sidedock-trigger-area)));
     background-color: transparent;
   }
-  .workspace-ribbon.mod-left:hover {
+  .workspace-ribbon:is(.mod-left, .mod-primary):hover {
     opacity: 1;
     transform: none;
   }
 
-  .workspace-ribbon.mod-left:hover + .mod-sidedock {
+  .workspace-ribbon:is(.mod-left, .mod-primary):hover + .mod-sidedock {
     padding-left: calc(var(--ribbon-width) - 8px);
   }
-  .workspace-ribbon.mod-left.is-collapsed:hover,
-  .workspace-ribbon.mod-left.is-collapsed:hover + .mod-sidedock {
+  .workspace-ribbon:is(.mod-left, .mod-primary).is-collapsed:hover,
+  .workspace-ribbon:is(.mod-left, .mod-primary).is-collapsed:hover + .mod-sidedock {
     transition-delay: var(--hover-sidedock-delay) !important;
   }
 
-  &.hover-sidedock .workspace-ribbon.mod-left.is-collapsed {
+  &.hover-sidedock .workspace-ribbon:is(.mod-left, .mod-primary).is-collapsed {
     z-index: 13;
   }
 
@@ -108,11 +108,11 @@ body:not(.is-mobile).hover-ribbon.show-ribbon {
     .mod-sidedock.mod-left-split .mod-top-left-space .workspace-tab-header-container {
       transition-timing-function: ease;
     }
-    .workspace-ribbon.mod-left:not(.is-collapsed):hover ~ .mod-sidedock.mod-left-split .mod-top-left-space .workspace-tab-header-container {
+    .workspace-ribbon:is(.mod-left, .mod-primary):not(.is-collapsed):hover ~ .mod-sidedock.mod-left-split .mod-top-left-space .workspace-tab-header-container {
       padding-left: 52px;
     }
-    .workspace-ribbon.mod-left:not(.is-collapsed):not(:hover) ~ .mod-sidedock.mod-left-split .mod-top-left-space .workspace-tab-header-container,
-    .workspace-ribbon.mod-left.is-collapsed ~ .mod-root > div:first-of-type .workspace-tab-header-container {
+    .workspace-ribbon:is(.mod-left, .mod-primary):not(.is-collapsed):not(:hover) ~ .mod-sidedock.mod-left-split .mod-top-left-space .workspace-tab-header-container,
+    .workspace-ribbon:is(.mod-left, .mod-primary).is-collapsed ~ .mod-root > div:first-of-type .workspace-tab-header-container {
       padding-left: 88px;
     }
   }

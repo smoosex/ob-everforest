@@ -32,14 +32,14 @@ body:is(.mod-macos, .adaptive-mode-off):not(.is-mobile) {
   }
 
   &.show-ribbon {
-    &:not(.mod-macos) .workspace-ribbon.mod-left:not(.is-collapsed),
-    &.mod-macos.is-frameless:not(.is-hidden-frameless) .workspace-ribbon.mod-left:not(.is-collapsed) {
+    &:not(.mod-macos) .workspace-ribbon:is(.mod-left, .mod-primary):not(.is-collapsed),
+    &.mod-macos.is-frameless:not(.is-hidden-frameless) .workspace-ribbon:is(.mod-left, .mod-primary):not(.is-collapsed) {
       margin-block: 8px;
     }
-    &:not(.mod-macos) .workspace-ribbon.mod-left:not(.is-collapsed) .sidebar-toggle-button {
+    &:not(.mod-macos) .workspace-ribbon:is(.mod-left, .mod-primary):not(.is-collapsed) .sidebar-toggle-button {
       height: calc(var(--header-height) - 24px);
     }
-    &:not(.hover-ribbon) .workspace-ribbon.mod-left:not(.is-collapsed) {
+    &:not(.hover-ribbon) .workspace-ribbon:is(.mod-left, .mod-primary):not(.is-collapsed) {
       padding-left: 16px;
     }
     &:not(.hover-ribbon) .mod-sidedock.mod-left-split:not(.is-sidedock-collapsed) {
@@ -47,8 +47,8 @@ body:is(.mod-macos, .adaptive-mode-off):not(.is-mobile) {
       padding-left: var(--ribbon-width);
     }
 
-    .workspace-ribbon.mod-left .sidebar-toggle-button .clickable-icon:hover,
-    .workspace-ribbon.mod-left .side-dock-actions .side-dock-ribbon-action:hover {
+    .workspace-ribbon:is(.mod-left, .mod-primary) .sidebar-toggle-button .clickable-icon:hover,
+    .workspace-ribbon:is(.mod-left, .mod-primary) .side-dock-actions .side-dock-ribbon-action:hover {
       box-shadow: none !important;
       background-color: transparent !important;
       color: var(--text-normal);
